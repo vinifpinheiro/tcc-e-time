@@ -94,7 +94,9 @@
         "decorations": true,
         "resizable": false,
         "fullscreen": false,
-        "transparent": true
+        "transparent": true,
+        "width": 500,
+        "height": 800
       }
     ]
   }

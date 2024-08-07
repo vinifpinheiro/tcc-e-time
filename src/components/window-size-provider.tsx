@@ -7,6 +7,8 @@ import {
 } from "@tauri-apps/api/window";
 import { useEffect } from "react";
 
+//TODO: Fix the window size and position
+
 async function setWindowPositionAndSize() {
   const screenSize = await currentMonitor();
 
