@@ -91,13 +91,17 @@
     },
     "windows": [
       {
-        "decorations": true,
+        "decorations": false,
         "resizable": false,
         "fullscreen": false,
         "transparent": true,
         "width": 500,
         "height": 800
       }
-    ]
+    ],
+    "macOSPrivateApi": true,
+    "systemTray": {
+      "iconPath": "icons/icon.png"
+    }
   }
 }
