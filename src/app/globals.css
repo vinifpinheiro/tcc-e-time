@@ -42,12 +42,12 @@
   }
 }
 
-html, body, #__next {
+/* html, body, #__next {
   height: 100%;
   margin: 0;
   padding: 0;
   background: transparent;
   border-radius: 20px;
-}
+} */
 
 
