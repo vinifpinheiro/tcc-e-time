@@ -6,7 +6,7 @@ import Menunav from "./menunav";
 
 export default function Navbar() {
   return (
-    <nav className="bg-accent rounded-b-xl p-2 flex items-center shadow-md justify-between">
+    <nav className="bg-accent rounded-full mt-4 mx-auto p-1 flex items-center shadow-md gap-2 w-min">
       <UserButton
         appearance={{
           elements: {
@@ -17,6 +17,7 @@ export default function Navbar() {
         }}
       />
       <Menunav />
+      <ThemeSelector />
     </nav>
   );
 }
