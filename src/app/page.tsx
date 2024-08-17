@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { WindowSizeProvider } from "@/components/window-size-provider";
+import { DividedPageLayout } from "@/components/ui/divided-page-layout";
 
 export default function Home() {
-  return <div className="flex items-center  w-full">TEST</div>;
+  return (
+    <DividedPageLayout
+      secondaryContent={
+        <></>
+      }
+    >
+      <></>
+    </DividedPageLayout>
+  );
 }

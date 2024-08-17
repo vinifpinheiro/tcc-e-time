@@ -4,7 +4,7 @@ import { menuItems } from "./items";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-export default function Menunav() {
+export default function MenuNav() {
   // take the path from the current page
   const pathname = usePathname();
 
