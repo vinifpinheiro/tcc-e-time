@@ -1,5 +1,5 @@
 "use client";
-import { Timer } from "lucide-react";
+import { ChartSpline, Timer, Users } from "lucide-react";
 import NavigationTabs from "./components/navigation-tabs";
 import { MonitorHeader } from "./components/monitor-header";
 
@@ -17,7 +17,7 @@ export default function MonitorLayout({
             {
               id: "timer",
               label: "Timer",
-              href: "monitor/timer",
+              href: "timer",
               children: (
                 <MonitorHeader
                   title="Marque seu tempo"
@@ -30,26 +30,28 @@ export default function MonitorLayout({
             {
               id: "analytics",
               label: "Insights",
-              href: "monitor/analytics",
+              href: "analytics",
               children: (
                 <MonitorHeader
                   title="Acompanhe a produtividade"
                   description="Aqui você pode acompanhar as estatísticas de produtividade dentro da equipe."
-                  tag="Timer"
-                  icon={<Timer className="text-muted-foreground size-6" />}
+                  tag="Insights"
+                  icon={
+                    <ChartSpline className="text-muted-foreground size-6" />
+                  }
                 />
               ),
             },
             {
               id: "team",
               label: "Equipe",
-              href: "monitor/team",
+              href: "team",
               children: (
                 <MonitorHeader
-                  title=""
-                  description="Aqui você pode acompanhar as estatísticas de produtividade dentro da equipe."
-                  tag="Timer"
-                  icon={<Timer className="text-muted-foreground size-6" />}
+                  title="Trabalhe em equipe"
+                  description="Veja o que sua equipe está fazendo e acompanhe o progresso de cada um."
+                  tag="Equipe"
+                  icon={<Users className="text-muted-foreground size-6" />}
                 />
               ),
             },

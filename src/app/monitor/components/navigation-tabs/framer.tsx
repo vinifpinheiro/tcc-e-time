@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import { Tab } from "./use-tabs";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const transition = {
   type: "tween",
@@ -26,6 +27,8 @@ const Tabs = ({
     Array<HTMLButtonElement | null | undefined>
   >([]);
 
+  const path = usePathname();
+
   useEffect(() => {
     setButtonRefs((prev) => prev.slice(0, tabs.length));
   }, [tabs.length]);
@@ -46,8 +49,11 @@ const Tabs = ({
       onPointerLeave={(e) => setHoveredTabIndex(null)}
     >
       {tabs.map((item, i) => {
+        // const to remove the monitor/ from the path and add the item.href to the path to link to the correct page
+        const navigationTarget = path.replace("/monitor/", item.href);
+
         return (
-          <Link href={item.href} key={item.id}>
+          <Link href={item.href} key={i}>
             <motion.button
               key={i}
               className={clsx(
