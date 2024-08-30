@@ -2,37 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 262.1 83.3% 57.8%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
-
-  .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
     --card: 224 71.4% 4.1%;
@@ -60,8 +31,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -79,4 +48,84 @@
   border-radius: 20px;
 } */
 
+.wheel.keen-slider {
+  display: block;
+  color: #fff;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+.wheel--perspective-right .wheel__inner {
+  perspective-origin: calc(50% + 100px) 50%;
+  transform: translateX(10px);
+  -webkit-transform: translateX(10px);
+}
+.wheel--perspective-left .wheel__inner {
+  perspective-origin: calc(50% - 100px) 50%;
+  transform: translateX(-10px);
+  -webkit-transform: translateX(-10px);
+}
 
+.wheel__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: 16%;
+  width: 100%;
+}
+
+.wheel__slides {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.wheel__shadow-top,
+.wheel__shadow-bottom {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background) / 0.9) 0%,
+    hsl(var(--background) / 0.5) 100%
+  );
+  left: 0;
+  height: calc(42% + 2px);
+  width: 100%;
+  border-bottom: 0.5px solid hsl(var(--border));
+  position: relative;
+  margin-top: -2px;
+  z-index: 5;
+}
+
+.wheel__shadow-bottom {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background) / 0.5) 0%,
+    hsl(var(--background) / 0.9) 100%
+  );
+  margin-top: 2px;
+  border-bottom: none;
+  border-top: 0.5px solid hsl(var(--border));
+}
+
+.wheel__label {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  margin-top: 1px;
+  margin-left: 5px;
+}
+
+.wheel__slide {
+  align-items: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  font-size: 20px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  justify-content: flex-end;
+}

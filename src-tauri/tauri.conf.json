@@ -95,8 +95,8 @@
         "resizable": false,
         "fullscreen": false,
         "transparent": true,
-        "width": 500,
-        "height": 800
+        "width": 450,
+        "height": 850
       }
     ],
     "macOSPrivateApi": true,
