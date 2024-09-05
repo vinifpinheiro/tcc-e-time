@@ -5,7 +5,7 @@ import { CircleTimer } from "./components/circle-time";
 
 export default function TimerPage() {
   return (
-    <div className="h-full w-full flex items-center justify- mt-6 flex-col gap-8">
+    <div className="h-full w-full flex items-center justify- mt-6 flex-col gap-8 p-6  ">
       <CircleTimer>TEST</CircleTimer>
       <div className="flex px-16 w-full justify-between">
         <StopButton />

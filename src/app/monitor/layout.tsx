@@ -58,7 +58,7 @@ export default function MonitorLayout({
           ]}
         />
       </div>
-      <div className="p-6 h-full">{children}</div>
+      <div className=" h-full relative overflow-y-scroll">{children}</div>
     </div>
   );
 }

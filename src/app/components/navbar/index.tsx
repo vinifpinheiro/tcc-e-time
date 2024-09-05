@@ -5,7 +5,7 @@ import { NavLeftButton } from "./left-button";
 
 export default function Navbar() {
   return (
-    <nav className="rounded-full flex items-center justify-between py-4 px-6  w-full">
+    <nav className="rounded-full flex items-center justify-between py-4 px-6  w-full bg-background relative z-20">
       <NavLeftButton />
       <UserButton
         appearance={{
