@@ -3,12 +3,17 @@
 import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import useTimer from "../../zustand";
 
 export const CircleTimer = ({ children }: { children: React.ReactNode }) => {
+  const { time, goal } = useTimer();
+  const percentage = (time / goal) * 100;
+  console.log(percentage, goal);
+
   return (
     <div className="w-60 h-60 rounded-md flex items-center justify-center relative">
       <CircularProgressbar
-        value={90}
+        value={percentage}
         maxValue={100}
         minValue={0}
         styles={buildStyles({
@@ -25,7 +30,9 @@ export const CircleTimer = ({ children }: { children: React.ReactNode }) => {
           </linearGradient>
         </defs>
       </svg>
-      <div className="absolute">{children}</div>
+      <div className="absolute  w-full h-full rounded-full overflow-hidden flex items-center justify-center px-8">
+        {children}
+      </div>
     </div>
   );
 };

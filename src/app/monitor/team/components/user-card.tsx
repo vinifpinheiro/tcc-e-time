@@ -35,7 +35,10 @@ export default function UserCard({ user }: { user?: User }) {
         </div>
       </div>
       <div className="w-full flex gap-2">
-        <Button variant={"outline"} className="gap-2 w-full hover:!border hover:!border-black">
+        <Button
+          variant={"outline"}
+          className="gap-2 w-full hover:!border hover:!border-black"
+        >
           Mandar Email <Mail className="size-4" />
         </Button>
       </div>

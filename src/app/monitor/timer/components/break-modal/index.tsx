@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { AlarmClockPlus, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import Wheel from "../timer-wheel/wheel";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { TimerWheel } from "../timer-wheel/timer-wheel";
 import dayjs from "dayjs";
+import useTimer from "@/app/monitor/zustand";
 
 export default function BreakModal() {
   const [startTime, setStartTime] = useState(new Date().toLocaleTimeString());
@@ -14,6 +14,8 @@ export default function BreakModal() {
     new Date(Date.now() + 2 * 60 * 60 * 1000).toLocaleTimeString()
   );
   const [totalTime, setTotalTime] = useState({ hours: 2, minutes: 0 });
+  const [open, setOpen] = useState(false);
+  const { setGoal, goal } = useTimer();
 
   useEffect(() => {
     const [startHours, startMinutes] = startTime.split(":");
@@ -54,7 +56,7 @@ export default function BreakModal() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant={"secondary"}
@@ -95,7 +97,15 @@ export default function BreakModal() {
           </div>
         </div>
 
-        <Button className="w-full">
+        <Button
+          className="w-full"
+          onClick={() => {
+            const { hours, minutes } = totalTime;
+            const totalSeconds = hours * 3600 + minutes * 60;
+            setGoal(totalSeconds + goal);
+            setOpen(false);
+          }}
+        >
           <p>
             Adcionar pausa de{" "}
             <span className="font-bold">{dynamicTotalTime()} </span>

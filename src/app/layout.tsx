@@ -3,6 +3,7 @@ import { ptBR } from "@clerk/localizations";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Navbar from "./components/navbar";
+import TimerProvider from "./timer-provider";
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +22,7 @@ export default function RootLayout({
             <SignedIn>
               <Navbar />
             </SignedIn>
-            {children}
+            <TimerProvider>{children}</TimerProvider>
           </ThemeProvider>
         </body>
       </html>
