@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  password  String
+  isAdmin   Boolean  @default(false)
+  startTime DateTime
+  endTime   DateTime
+  timezone  String
+  teamId    String?  // Campo opcional para referenciar a equipe a qual o usuário pertence
+  team      Team?    @relation(fields: [teamId], references: [id], onDelete: SetNull) // Relacionamento com Team
+  times     Time[]   // Relacionamento com Time (um usuário pode ter vários registros de tempo)
+  
+  // Novo campo para a relação de administrador
+  teamAdmin Team[]   @relation("AdminRelation") // Um usuário pode ser administrador de várias equipes
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  users     User[]   // Relacionamento com os usuários da equipe (um time tem vários usuários)
+  adminId   String   // ID do usuário que é administrador
+  admin     User     @relation("AdminRelation", fields: [adminId], references: [id], onDelete: Cascade) // Relacionamento com User para definir o administrador
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Time {
+  id        String   @id @default(cuid()) // Identificador único gerado automaticamente
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Relacionamento com a tabela User
+  date      DateTime // Data do registro de tempo
+  startTime DateTime // Hora de início do trabalho
+  endTime   DateTime // Hora de término do trabalho
+  totalTime Int      // Duração total do trabalho em minutos
+  breaks    Break[]  // Relacionamento com a tabela Break (cada registro de tempo pode ter vários breaks)
+  createdAt DateTime @default(now()) // Data de criação do registro
+  updatedAt DateTime @updatedAt // Data da última atualização do registro
+}
+
+
+model Break {
+  id        String   @id @default(cuid())
+  timeId    String
+  time      Time     @relation(fields: [timeId], references: [id], onDelete: Cascade) // Relacionamento com Time (um break pertence a um registro de tempo)
+  startTime DateTime // Hora de início do break
+  endTime   DateTime // Hora de término do break
+  totalTime Int      // Duração total do break
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
