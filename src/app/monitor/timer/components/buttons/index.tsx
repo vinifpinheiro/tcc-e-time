@@ -13,9 +13,9 @@ export default function TimerButtons() {
     <div className="flex px-16 w-full justify-between">
       <StopButton />
       {isRunning ? <PauseButton /> : <StartButton />}
-        <button onClick={reset}>
+        {/* <button onClick={reset}>
           RESTE
-        </button>
+        </button> */}
     </div>
   );
 }

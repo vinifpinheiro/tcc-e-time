@@ -48,6 +48,9 @@
         "setIgnoreCursorEvents": true,
         "startDragging": true,
         "print": true
+      },
+      "shell": {
+        "open": true
       }
     },
     "bundle": {
@@ -91,6 +94,7 @@
     },
     "windows": [
       {
+        "title": "e-Time",
         "decorations": true,
         "resizable": false,
         "fullscreen": false,
@@ -101,7 +105,7 @@
     ],
     "macOSPrivateApi": true,
     "systemTray": {
-      "iconPath": "icons/icon.png"
+      "iconPath": "icons/logo-no-background-white.png"
     }
   }
 }

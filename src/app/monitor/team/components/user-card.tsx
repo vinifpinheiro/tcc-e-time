@@ -1,41 +1,65 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import clsx from "clsx";
 import { Mail, MapPin } from "lucide-react";
+import { open } from "@tauri-apps/api/shell";
 
-type User = any;
+export default function UserCard({
+  user,
+}: {
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    local: string;
+    image: string;
+    color: string;
+  };
+}) {
+  const handleSendEmail = async () => {
+    const mailtoUrl = `mailto:${user.email}`;
+    try {
+      await open(mailtoUrl);
+    } catch (error) {
+      console.error("Failed to open email client:", error);
+    }
+  };
 
-export default function UserCard({ user }: { user?: User }) {
   return (
     <div className="p-6 w-full rounded-lg flex items-start gap-4 relative overflow-hidden bg-secondary flex-col">
       <div className="flex gap-2">
         <div className="relative rounded-full bg-white flex">
-          <div className="h-4 w-4 bg-primary absolute rounded-full top-0 left-2" />
+          <div
+            className={clsx(
+              "h-4 w-4 absolute rounded-full top-0 left-2",
+              user.color
+            )}
+          />
           <img
-            src="https://tm.ibxk.com.br/2019/02/17/17124052466014.jpg"
+            src={user.image}
             alt=""
-            className="h-20 w-20 rounded-full"
+            className="h-20 w-20 rounded-full object-cover"
           />
         </div>
         <div className="flex flex-col gap-1">
           <h1 className="text-foreground text-lg font-bold uppercase">
-            Michael Scott
+            {user.firstName + " " + user.lastName}
           </h1>
           <div className="flex gap-x-1 items-center">
             <Mail className="text-muted-foreground size-4" />
-            <p className="text-muted-foreground text-sm">
-              emailexample@example.com
-            </p>
+            <p className="text-muted-foreground text-sm">{user.email}</p>
           </div>
 
           <div className="flex gap-1 items-center">
             <MapPin className="text-muted-foreground size-4" />
-            <p className="text-sm text-muted-foreground">
-              EUA, Scranton Pensilvânia
-            </p>
+            <p className="text-sm text-muted-foreground">{user.local}</p>
           </div>
         </div>
       </div>
       <div className="w-full flex gap-2">
         <Button
+          onClick={handleSendEmail}
           variant={"outline"}
           className="gap-2 w-full hover:!border hover:!border-black"
         >

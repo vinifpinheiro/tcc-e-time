@@ -15,7 +15,30 @@ export default function TeamMap() {
   map.addPin({
     lat: 40.73061,
     lng: -73.935242,
-    svgOptions,
+    svgOptions: {
+      color: "hsl(360deg 85% 60%)",
+      radius: 0.5,
+    },
+  });
+
+  //berlin pin
+  map.addPin({
+    lat: 52.520008,
+    lng: 13.404954,
+    svgOptions: {
+      color: "hsl(217deg 91% 60%)",
+      radius: 0.5,
+    },
+  });
+
+  //sao paulo pin
+  map.addPin({
+    lat: -23.55052,
+    lng: -46.633308,
+    svgOptions: {
+      color: "hsl(142deg 71% 45%)",
+      radius: 0.5,
+    },
   });
 
   const svgMap = map.getSVG({

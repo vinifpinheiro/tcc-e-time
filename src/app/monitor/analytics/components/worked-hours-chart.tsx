@@ -21,17 +21,23 @@ import {
 export const description = "A horizontal bar chart";
 
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { month: "Janeiro", desktop: 8.2 },
+  { month: "Fevereiro", desktop: 8.5 },
+  { month: "Março", desktop: 8.3 },
+  { month: "Abril", desktop: 8.1 },
+  { month: "Maio", desktop: 8.4 },
+  { month: "Junho", desktop: 8.2 },
+  { month: "Julho", desktop: 8.3 },
+  { month: "Agosto", desktop: 8.5 },
+  { month: "Setembro", desktop: 8.4 },
+  { month: "Outubro", desktop: 8.2 },
+  { month: "Novembro", desktop: 8.3 },
+  { month: "Dezembro", desktop: 8.4 },
 ];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Horas",
     color: "hsl(var(--primary))",
   },
 } satisfies ChartConfig;
@@ -73,14 +79,6 @@ export function WorkedHoursChart() {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 }

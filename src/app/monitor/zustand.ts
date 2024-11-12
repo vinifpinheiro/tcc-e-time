@@ -20,7 +20,7 @@ type TimerState = {
 
 // Define o estado inicial do timer.
 const initialState = {
-  time: 0, // O tempo começa em 0.
+  time: 11365, // O tempo começa em 0.
   goal: 0, // A meta de tempo começa em 0.
   isRunning: false, // O timer não está rodando inicialmente.
   isPaused: false, // O timer não está pausado inicialmente.

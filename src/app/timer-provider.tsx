@@ -21,7 +21,7 @@ export default function TimerProvider({
 
   useEffect(() => {
     if (goal === 0) {
-      setGoal(10);
+      setGoal(28800);
     }
 
     let interval: NodeJS.Timeout;
